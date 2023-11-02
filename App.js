@@ -15,10 +15,13 @@ const heading=(
 //components
 //functional:-new
 //class based:- old
+const string="Ananth Nayak";
 
 const HeaderComponent=()=>(
     <div>
-        <h1>namaste 1</h1>
+        {heading}   
+        <h1>{string}</h1>                  {/*we write jsx or any piece of js code inside {} since heading is a variable we write in {}*/}
+        <h2>namaste 1</h2>            {/* jsx return only one element */}
         <h2>heading 2</h2>
     </div>
 );
@@ -26,7 +29,7 @@ const HeaderComponent=()=>(
 const root=ReactDOM.createRoot(document.getElementById("root"));
 
 
-root.render(<HeaderComponent />);
+root.render(<HeaderComponent />);   //rendering of functional component
 
 
  
