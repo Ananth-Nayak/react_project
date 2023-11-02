@@ -1,33 +1,32 @@
 /***
- *  npx is used for executing the package without downloading it
- *  npm is used for packages to have in our code                 
- * 
  */
+//React.createElement=>object=>HTML(DOM) code
+//JSx=>React.createElement=>object=>HTML
 
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const heading=React.createElement("h1",{
-    id:"title1",
-    key:"h1",
-},"Heading1");
+const heading=(
+    <h1 id="heading" key="h1">
+        Hello!
+        </h1>
+);
 
-//React.createElement=>object=>HTML(DOM) code
+//components
+//functional:-new
+//class based:- old
 
-const heading2=React.createElement("h2",{
-    id:"title2",
-    key:"h2",
-},"Heading2");
-
-const container=React.createElement("div",{
-    id:"container"
-},[heading,heading2]);                        //whenever we pass elements in array we should give key valuse to each array elements in props
-
+const HeaderComponent=()=>(
+    <div>
+        <h1>namaste 1</h1>
+        <h2>heading 2</h2>
+    </div>
+);
 
 const root=ReactDOM.createRoot(document.getElementById("root"));
 
 
-root.render(container);
+root.render(<HeaderComponent />);
 
-//JSx=>html like syntax
+
  
