@@ -1,16 +1,6 @@
 /***
- * Parcel Features:-
- * Hot Module Replacement:-whenever we click save button it automatically reload webpage
- * parcel will keep track of the all the files which are updating
- * it uses file watcher algorithm written in c++                       [npx parcel build index.html(delete main:-app.js in package.json file or it will throw error)]
- * it creates local server for developers to check the code
- * it bundles all files to production ready
- * minifier
- * cleaning our code(like removing console.log)
- * superfast
- * image optimaisation
- * caching while development
- * compatible with older version of browser
+ *  npx is used for executing the package without downloading it
+ *  npm is used for packages to have in our code                 
  * 
  */
 
@@ -18,20 +8,26 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 const heading=React.createElement("h1",{
-    id:"title1"
+    id:"title1",
+    key:"h1",
 },"Heading1");
 
+//React.createElement=>object=>HTML(DOM) code
+
 const heading2=React.createElement("h2",{
-    id:"title2"
+    id:"title2",
+    key:"h2",
 },"Heading2");
 
 const container=React.createElement("div",{
     id:"container"
-},[heading,heading2]);
+},[heading,heading2]);                        //whenever we pass elements in array we should give key valuse to each array elements in props
 
 
 const root=ReactDOM.createRoot(document.getElementById("root"));
-//passing a react element inside the root
+
+
 root.render(container);
-//render modifies dom
-//it will override if any content already present in the root element
+
+//JSx=>html like syntax
+ 

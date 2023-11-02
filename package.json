@@ -2,7 +2,9 @@
   "name": "nam-react",
   "version": "1.0.0",
   "description": "learning react",
-    "scripts": {
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "build parcel index.html",
     "test": "jest"
   },
   "repository": {
@@ -16,6 +18,8 @@
   },
   "homepage": "https://github.com/Ananth-Nayak/react_learn_project#readme",
   "devDependencies": {
+    "@babel/core": "^7.23.2",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "parcel": "^2.10.1",
     "process": "^0.11.10"
   },
