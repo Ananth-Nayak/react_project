@@ -1055,9 +1055,8 @@ const restaurantList=[
     ];
 
 
-const RestaurantCard=({restaurant})=>{     //destructuring restaurant from props so we dont need to write props.restaurant every time
+const RestaurantCard=({name,cuisines,avgRating,cloudinaryImageId})=>{     //since restaurant.info has every props like name,avgrating etc we desturcture using ...(spread operator) 
 
-  const {cloudinaryImageId,name,cuisines,avgRating}=restaurant.info;
 
     return (
         <div className="card">
@@ -1073,14 +1072,15 @@ const RestaurantCard=({restaurant})=>{     //destructuring restaurant from props
 
 const Body=()=>(
 <div className="restaurant-list">
-<RestaurantCard restaurant={restaurantList[0]}/>
-<RestaurantCard restaurant={restaurantList[1]} />
-<RestaurantCard restaurant={restaurantList[2]}/>
-<RestaurantCard restaurant={restaurantList[3]}/>
-<RestaurantCard restaurant={restaurantList[4]}/>
-<RestaurantCard restaurant={restaurantList[5]}/>
-<RestaurantCard restaurant={restaurantList[6]}/>
-
+<RestaurantCard {...restaurantList[0].info}/>
+<RestaurantCard {...restaurantList[1].info} />
+<RestaurantCard {...restaurantList[2].info}/>
+<RestaurantCard {...restaurantList[3].info}/>
+<RestaurantCard {...restaurantList[4].info}/>
+<RestaurantCard {...restaurantList[5].info}/>
+<RestaurantCard {...restaurantList[6].info}/>
+<RestaurantCard {...restaurantList[7].info}/>
+<RestaurantCard {...restaurantList[8].info}/>
 </div>
     
 )
