@@ -1,57 +1,16 @@
-/***
- */
-//React.createElement=>object=>HTML(DOM) code
-//JSx=>React.createElement=>object=>HTML
-
-     /*
-     Header
-        logo
-        nav item(right side)
-     body
-        restaurant list
-            search bar
-            restaurent card
-                image
-                name
-                rating
-                cuisines 
-    footer
-        reference links
-        copyright
-     */ 
-
 
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const Title=()=>(
-    <a href="/">
-        <img 
-        className="logo"
-        alt="logo"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwb0D5yQSwJFEmL-lXUvEWZAbsYvCP2QrlXg&usqp=CAU"
-        />
-    </a>
-      
-);
+import Header from "./components/Header";   //default import
 
-//components
-//functional:-new
-//class based:- old
+import { Title } from "./components/Header";  //Named import
 
-const Header=()=>(
-    <div className="header">
-        <Title /> 
-        <div className="nav-items"> 
-        <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
-            <li>Cart</li>
-        </ul>
-        </div>
-    </div>
-);
+//we can also import all the components like import * as obj from "______"
+//then we use like obj.Title or obj.Header
+
+
+
 const restaurantList=[
     {
         info: {
@@ -1055,9 +1014,7 @@ const restaurantList=[
     ];
 
 
-const RestaurantCard=({name,cuisines,avgRating,cloudinaryImageId})=>{     //since restaurant.info has every props like name,avgrating etc we desturcture using ...(spread operator) 
-
-
+const RestaurantCard=({name,cuisines,avgRating,cloudinaryImageId})=>{ 
     return (
         <div className="card">
             <img 
