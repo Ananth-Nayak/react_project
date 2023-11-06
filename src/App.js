@@ -1,15 +1,7 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-import Header from "./components/Header";   //default import
-
-import { Title } from "./components/Header";  //Named import
-
-//we can also import all the components like import * as obj from "______"
-//then we use like obj.Title or obj.Header
-
-
+import Header,{Title} from "./components/Header"; //default and named together
 
 const restaurantList=[
     {
