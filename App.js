@@ -1072,15 +1072,11 @@ const RestaurantCard=({name,cuisines,avgRating,cloudinaryImageId})=>{     //sinc
 
 const Body=()=>(
 <div className="restaurant-list">
-<RestaurantCard {...restaurantList[0].info}/>
-<RestaurantCard {...restaurantList[1].info} />
-<RestaurantCard {...restaurantList[2].info}/>
-<RestaurantCard {...restaurantList[3].info}/>
-<RestaurantCard {...restaurantList[4].info}/>
-<RestaurantCard {...restaurantList[5].info}/>
-<RestaurantCard {...restaurantList[6].info}/>
-<RestaurantCard {...restaurantList[7].info}/>
-<RestaurantCard {...restaurantList[8].info}/>
+{
+  restaurantList.map((restaurant)=>(
+    <RestaurantCard {...restaurant.info}  key={restaurant.info.id} />
+  ))
+}
 </div>
     
 )
