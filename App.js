@@ -1055,22 +1055,33 @@ const restaurantList=[
     ];
 
 
-const RestaurantCard=()=>{
+const RestaurantCard=({restaurant})=>{     //destructuring restaurant from props so we dont need to write props.restaurant every time
+
+  const {cloudinaryImageId,name,cuisines,avgRating}=restaurant.info;
+
     return (
         <div className="card">
             <img 
-            src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + restaurantList[0].info?.cloudinaryImageId} />
-            <h2>{restaurantList[0].info?.name}</h2>
-            <h3>{restaurantList[0].info?.cuisines.join(", ")}</h3>
-            <h4>{restaurantList[0].info?.avgRating + " Stars"}</h4>
+            src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} />
+            <h2>{name}</h2>
+            <h3>{cuisines.join(", ")}</h3>
+            <h4>{avgRating + " Stars"}</h4>
         </div>
     )
 }
 
 
 const Body=()=>(
+<div className="restaurant-list">
+<RestaurantCard restaurant={restaurantList[0]}/>
+<RestaurantCard restaurant={restaurantList[1]} />
+<RestaurantCard restaurant={restaurantList[2]}/>
+<RestaurantCard restaurant={restaurantList[3]}/>
+<RestaurantCard restaurant={restaurantList[4]}/>
+<RestaurantCard restaurant={restaurantList[5]}/>
+<RestaurantCard restaurant={restaurantList[6]}/>
 
-    <RestaurantCard />
+</div>
     
 )
 
