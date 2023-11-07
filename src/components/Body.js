@@ -1,6 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
 import { restaurantList } from "../constants";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 function filterData(searchTxt,restauarantList){
   const filterData=restauarantList.filter((restaurant)=>
@@ -10,11 +10,17 @@ function filterData(searchTxt,restauarantList){
   return filterData;
 }
 
-
 const Body=()=>{
 
   const [searchTxt,setSearchTxt]=useState("") 
-  const [restaurants,setRestaurants]=useState(restaurantList);    //to maintain the state of restaurantlist when we filtering for search button
+  const [restaurants,setRestaurants]=useState(restaurantList);
+
+  useEffect(()=>{               //useEffect is a hook whose fn is to re render our page only when the change of dependency state
+    console.log("useeffect")   //useeffect call back fn will be called after the rending of page
+  },[restaurants])              //emty dependency array=> useeffect will called only once after rendering our page
+                              //dep array [searchTxt] =>first time after rendering + after rendering of our page whenever searchTxt get updated
+  console.log("render")
+
   return (
     <>
     <div className="search-container">
@@ -28,10 +34,7 @@ const Body=()=>{
       />                                          
       <button className="search-btn"
       onClick={()=>{
-        //need to filter data
-        const data=filterData(searchTxt,restaurantList)  //we use restaurantList instead of restaurant(state variable)
-                                                         //bcz we should filter the data with all the restaurants(if we use state var the we are filtering in already filtered data)
-        //and using that data,we update restaurantList
+        const data=filterData(searchTxt,restaurantList)
         setRestaurants(data);
       }}
       >Search</button>
@@ -39,9 +42,9 @@ const Body=()=>{
     </div>
     <div className="restaurant-list">
     {
-      restaurants.map((restaurant)=>(                                      //since default value in useState is restauarantList we use the state variable
-        <RestaurantCard {...restaurant.info}  key={restaurant.info.id} />  //also when we filter in search it will only show filtered data if we use like this
-      ))
+      restaurants.map((restaurant)=>(                                      
+          <RestaurantCard {...restaurant.info}  key={restaurant.info.id} />  
+           ))
     }
     </div>
   </>
