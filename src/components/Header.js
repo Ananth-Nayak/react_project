@@ -8,10 +8,11 @@ const Title=()=>(
     </a>
       
 );
-
+const head="khana khajana";
 const Header=()=>(
     <div className="header">
-        <Title /> 
+        <Title />
+        <h1>{head}</h1> 
         <div className="nav-items"> 
         <ul>
             <li>Home</li>
