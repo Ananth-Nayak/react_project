@@ -13,13 +13,19 @@ function filterData(searchTxt,restauarantList){
 const Body=()=>{
 
   const [searchTxt,setSearchTxt]=useState("") 
-  const [restaurants,setRestaurants]=useState(restaurantList);
+  const [restaurants,setRestaurants]=useState([]);
 
-  useEffect(()=>{               //useEffect is a hook whose fn is to re render our page only when the change of dependency state
-    console.log("useeffect")   //useeffect call back fn will be called after the rending of page
-  },[restaurants])              //emty dependency array=> useeffect will called only once after rendering our page
-                              //dep array [searchTxt] =>first time after rendering + after rendering of our page whenever searchTxt get updated
-  console.log("render")
+  useEffect(()=>{             
+    getRestaurant();                                    
+  },[]);          
+
+  async function getRestaurant(){
+    const data=await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.6235274&lng=74.6917418&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    )
+    const json=await data.json();
+    setRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  }
 
   return (
     <>
