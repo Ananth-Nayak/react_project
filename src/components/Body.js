@@ -33,8 +33,6 @@ const Body=()=>{
   //not rendering (or avoid rendering)
   if(!allRestaurants) return null;    //when we dont have allRestaurants then it wont render anything
 
-  if(filteredRestaurants?.length===0) return <h1>Restaurant is not found</h1>
-
   //conditional rendering
   return allRestaurants.length===0?(
     <Shimmer />
