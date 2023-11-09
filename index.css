@@ -30,6 +30,7 @@
     height: 150px;
 }
 
+
 .restaurant-list{
     display:flex;
     flex-wrap: wrap;

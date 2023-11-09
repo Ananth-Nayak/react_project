@@ -22,11 +22,12 @@ const Body=()=>{
 
   async function getRestaurant(){
     const data=await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.6235274&lng=74.6917418&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9141417&lng=74.8559568&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     )
     const json=await data.json();
-    setAllRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    console.log(json);
+    setAllRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
   }
 
@@ -57,8 +58,8 @@ const Body=()=>{
     </div>
     <div className="restaurant-list">
     {
-      filteredRestaurants.map((restaurant)=>(                                      
-          <RestaurantCard {...restaurant.info}  key={restaurant.info.id} />  
+      filteredRestaurants.map((restaurant)=>(
+          <RestaurantCard {...restaurant.info}  key={restaurant.info.id} /> 
            ))
     }
     </div>

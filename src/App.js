@@ -6,35 +6,47 @@ import Body from "./components/Body";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Error from "./components/Error";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Contact from "./components/Contact";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
-//creteBrowsRout used to give path
-//since we need to render our root using fn component and according to various path
-// RouterProvider is fn component used when rendering our root with attribute containing createBrowseHistory path lists
 
 
 const AppLayout=()=>{
     return (
         <>
             <Header/>
-            <Body/>
-            <Footer/>
+            <Outlet />          { //all the children will go at the outlet  
+            <Footer/>                      }
+            
         </>
     )
     
 }
 
-const appRouter=createBrowserRouter([   //cretBrowsRouter takes array of list(path)
+const appRouter=createBrowserRouter([   
     {
         path:"/",
-        element:<AppLayout />, //at path "/" it renders applayout fn component
-        errorElement:<Error />
+        element:<AppLayout />, 
+        errorElement:<Error />,
+        children:[                 //we need our  /about page content inside applayout bw header and footer so we create children inside applayout
+            {
+                path:"/",
+                element:<Body />,
+                errorElement:<Error/>  
+            },
+            {
+                path:"/about",
+                element:<About />,
+                errorElement:<Error/>  
+            },
+            {
+                path:"/contact",
+                element:<Contact />,
+                errorElement:<Error/>  
+            }
+        ]
     },
-    {
-        path:"/about",
-        element:<About />,
-        errorElement:<Error/>  //to handle error
-    }
+
 ]);
 
 const root=ReactDOM.createRoot(document.getElementById("root"));
