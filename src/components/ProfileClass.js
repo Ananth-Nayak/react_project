@@ -1,4 +1,5 @@
 import React from "react";
+import { json } from "react-router-dom";
 
 
 class Profile extends React.Component{
@@ -7,31 +8,48 @@ class Profile extends React.Component{
         super(props)
 
         this.state={
-            count:0
+            userInfo:{
+                name:"",
+                location:""
+            }
         }
-        console.log("child construcor"+ this.props.name)
     }
-    componentDidMount(){
-        console.log("child componentDid" + this.props.name)
+   async componentDidMount(){
+    const data=await fetch("https://api.github.com/users/Ananth-Nayak")
+    const json=await data?.json();
+    console.log(json)
+    this.setState({
+        userInfo:json    
+   });
 
-    }
+   }
+
+  
 
     render(){
-        const {count}=this.state;
-        const {name}=this.props;
-        console.log("child render" +this.props.name)
+        const creator=this.state.userInfo;
         return (<div>
             <h2>Profile Class Component</h2>
-            <h3>{name}</h3>
-            <h3>{count}</h3>
-            <button onClick={()=>{
-                this.setState({  //this is how we use setState in class component
-                    count:2
-                })
-            }}>Countclass</button>
+            <img src={creator.avatar_url} />
+            <h2>Name: {creator.name}</h2>
+            <h2>Location: {creator.location}</h2>
+
             </div>
         )
     }
 }
 
 export default Profile;
+
+/**
+ * Parent constructor     }
+ * parent render          }         render phase
+ * child construxtor      }
+ * child render           }
+ * 
+ * DOM is updated
+ * parentDidMount   //bcs we have used async operation for fetching data so it takes time so parent will get first call then child
+ * childDidMount    //if we use before fetching data from api then child will get call first
+ * 
+ * child render // it will call again bcs of setState....after setState the child will re render
+ */

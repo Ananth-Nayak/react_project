@@ -1,25 +1,32 @@
-import { Outlet } from "react-router-dom";
-import ProfCls from "./ProfileClass";
+import AboutPageComponent from "./AboutPageContent";
+import ProfileClass from "./ProfileClass";
 import React from "react";
 
 
 class About extends React.Component{
     constructor(props){
         super(props);
-        console.log("Parent constructor")
-    }
-    componentDidMount(){
-        console.log("Parent componentDid")
 
     }
+    componentDidMount(){
+        this.timer=setInterval(() => {
+            console.log("hello Ananth")
+        },1000);
+    };
+    componentDidUpdate(prevProps,prevState){
+        //using if and else condition
+    }
+    componentWillUnmount(){
+        clearInterval(this.timer)
+    }
+
     render(){
-        console.log("Parent render")
+       
 
         return (
             <div>
-            <h1>About us page</h1>
-            <ProfCls name=" first child" />
-            <ProfCls name=" second Child" />
+            <AboutPageComponent/>
+            <ProfileClass />
          </div>
         )
     }
@@ -27,14 +34,3 @@ class About extends React.Component{
 
 export default About;
 
-/**
- *Parent constructor
- Parent render
-child construcor first child
-child render first child
-child construcor second Child
-child render second Child
-child componentDid first child
-child componentDid second Child 
-Parent componentDid
- */
