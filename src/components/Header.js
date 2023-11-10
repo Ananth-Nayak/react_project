@@ -1,10 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";   //link will work like anchor tag but wont refresh or render our whole page
-//anchor tag will refresh and renders whole page again if we use <a> while moving to different path of our webpage
-//since we are fetching data from api it is better to avoid refreshing our code so we use Link                                           
-
-//SPA-single page application (it means that whenever we)
-//client side routing
+import { Link } from "react-router-dom";   
             
 const Title=()=>(
     <a href="/">

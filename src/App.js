@@ -8,6 +8,7 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import RestaurantMenu from "./components/RestroMenu";
 
 
 
@@ -15,10 +16,9 @@ const AppLayout=()=>{
     return (
         <>
             <Header/>
-            <Outlet />          { //all the children will go at the outlet  
-            <Footer/>                      }
-            
-        </>
+            <Outlet />        
+            <Footer/>         
+             </>
     )
     
 }
@@ -28,7 +28,7 @@ const appRouter=createBrowserRouter([
         path:"/",
         element:<AppLayout />, 
         errorElement:<Error />,
-        children:[                 //we need our  /about page content inside applayout bw header and footer so we create children inside applayout
+        children:[                 
             {
                 path:"/",
                 element:<Body />,
@@ -43,6 +43,10 @@ const appRouter=createBrowserRouter([
                 path:"/contact",
                 element:<Contact />,
                 errorElement:<Error/>  
+            },
+            {
+                path:"restaurant/:resId",
+                element:<RestaurantMenu />
             }
         ]
     },

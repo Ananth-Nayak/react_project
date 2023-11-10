@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { restaurantList } from "../constants";
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 function filterData(searchTxt,restauarantList){
   const filterData=restauarantList.filter((restaurant)=>
@@ -31,11 +32,11 @@ const Body=()=>{
 
   }
 
-  //not rendering (or avoid rendering)
-  if(!allRestaurants) return null;    //when we dont have allRestaurants then it wont render anything
+  
+  if(!allRestaurants) return null;    
 
-  //conditional rendering
-  return allRestaurants.length===0?(
+ 
+  return (allRestaurants.length===0)?(
     <Shimmer />
   ) : (
     <>
@@ -59,7 +60,9 @@ const Body=()=>{
     <div className="restaurant-list">
     {
       filteredRestaurants.map((restaurant)=>(
-          <RestaurantCard {...restaurant.info}  key={restaurant.info.id} /> 
+          <Link to={"/restaurant/"+restaurant?.info?.id} key={restaurant?.info?.id} >
+            <RestaurantCard {...restaurant?.info} />
+          </Link>   
            ))
     }
     </div>
