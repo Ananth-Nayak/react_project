@@ -5,8 +5,6 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 
-
-
 const Body=()=>{
   const [allRestaurants,setAllRestaurants]=useState([])
   const [searchTxt,setSearchTxt]=useState("") 
@@ -27,8 +25,7 @@ const Body=()=>{
 
   }
 
-  
-  if(!allRestaurants) return null;    
+   if(!allRestaurants) return null;    
 
  
   return (allRestaurants.length===0)?(
@@ -55,7 +52,7 @@ const Body=()=>{
     <div className="restaurant-list">
     {
       filteredRestaurants.map((restaurant)=>(
-          <Link to={"/restaurant/"+restaurant?.info?.id} key={restaurant?.info?.id} >
+          <Link to={"/restaurant/"+restaurant?.info?.id} key={restaurant?.info?.id} className="restaurant" >
             <RestaurantCard {...restaurant?.info} />
           </Link>   
            ))

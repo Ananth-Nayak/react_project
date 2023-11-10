@@ -36,6 +36,7 @@
     flex-wrap: wrap;
 }
 
+
  
 
 .shimmer-card{
@@ -54,3 +55,8 @@
     margin:20px;
 }
 
+.restaurant{
+        color:unset;
+        text-decoration:none;
+        display:flex
+}
