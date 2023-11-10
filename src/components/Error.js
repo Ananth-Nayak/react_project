@@ -1,5 +1,5 @@
 import { useRouteError } from "react-router-dom";
-//useRouteError is hook given by react-router-dom package to get more details about error
+
 
 const Error=()=>{
     const err=useRouteError();

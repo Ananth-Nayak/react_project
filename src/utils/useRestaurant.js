@@ -20,6 +20,3 @@ const useRestaurant=(resId)=>{
 }
 
 export default useRestaurant;
-
-//fn component is a fn which returns a jsx code
-//where as hooks are fn which containes piece of js code which extracts sonme logic

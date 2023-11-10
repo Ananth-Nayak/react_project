@@ -16,8 +16,8 @@ const useOnline=()=>{
         window.addEventListener('offline',handleOffline)
 
         return ()=>{
-            window.removeEventListener('online',handleOnline)   //to removeListener we have to pass the same fn as the addevent listener
-            window.removeEventListener('offline',handleOffline) //so we wrote handle online and offline fn as different(we cannot write code inside remoEvent) 
+            window.removeEventListener('online',handleOnline)   
+            window.removeEventListener('offline',handleOffline)
         }
     },[])
 

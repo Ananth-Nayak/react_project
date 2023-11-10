@@ -40,16 +40,3 @@ class Profile extends React.Component{
 }
 
 export default Profile;
-
-/**
- * Parent constructor     }
- * parent render          }         render phase
- * child construxtor      }
- * child render           }
- * 
- * DOM is updated
- * parentDidMount   //bcs we have used async operation for fetching data so it takes time so parent will get first call then child
- * childDidMount    //if we use before fetching data from api then child will get call first
- * 
- * child render // it will call again bcs of setState....after setState the child will re render
- */

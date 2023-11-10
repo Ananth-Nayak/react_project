@@ -8,6 +8,7 @@
 .nav-items>ul{
     display: flex;
     list-style-type: none;
+
 }
 
 .nav-items>ul>li{

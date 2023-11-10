@@ -1,15 +1,29 @@
 
-import React, { Profiler } from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header"; 
 import Body from "./components/Body";
 import Footer from "./components/Footer";
-import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestroMenu";
 import Profile from "./components/Profile";
+import Shimmer from "./components/Shimmer";
+
+/**
+ * Chunking
+ * Dynamic Bundling
+ * lazy loading
+ * code splitting
+ * on demand loading
+ * dynamic import
+ * */
+
+const Instamart=lazy(()=>import("../src/components/Instamart")) //chunking(we should create this where we are impoerting)
+// upon on demand loading => upon rendering =>react suspends loading 
+
+const About=lazy(()=>import("./components/About"));
 
 
 
@@ -37,7 +51,11 @@ const appRouter=createBrowserRouter([
             },
             {
                 path:"/about",
-                element:<About />,
+                element:(
+                <Suspense fallback={<h1>Loading....</h1>}>
+                <About />
+                </Suspense>
+                ),
                 errorElement:<Error/>,
                 children:[{
                     path:"profile",                       
@@ -53,7 +71,15 @@ const appRouter=createBrowserRouter([
             {
                 path:"restaurant/:resId",
                 element:<RestaurantMenu />
-            }
+            },
+            {
+                path:"/instamart",
+                element:(
+                <Suspense fallback={<Shimmer />}>
+                    <Instamart />
+                </Suspense>
+                )    
+            },
         ]
     },
 

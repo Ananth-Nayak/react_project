@@ -14,7 +14,7 @@ class About extends React.Component{
         },1000);
     };
     componentDidUpdate(prevProps,prevState){
-        //using if and else condition
+        
     }
     componentWillUnmount(){
         clearInterval(this.timer)
